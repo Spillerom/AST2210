@@ -30,8 +30,29 @@ for i=center:center+5
     end
 end
 
+minima_3 = 10000;
+minima_3_x_pos = 0;
+
+minima_4 = 10000;
+minima_4_x_pos = 0;
+
+for i=center:center+10
+    if y(i) < minima_4
+        minima_4 = y(i);
+        minima_4_x_pos = i-1;
+    end
+    j = center-(i-center)
+    if y(j) < minima_3
+        minima_3 = y(j);
+        minima_3_x_pos = j-1;
+    end
+end
+
+
 minima_1_x_pos
 minima_2_x_pos
+minima_3_x_pos
+minima_4_x_pos
 
 size_of_airydisk = minima_2_x_pos-minima_1_x_pos
 
@@ -45,6 +66,8 @@ hold on
 plot([220 220], [0 h], '-r')
 plot((minima_1_x_pos),(minima_1),'-ro')
 plot((minima_2_x_pos),(minima_2),'-ro')
+plot((minima_3_x_pos),(minima_3),'-ro')
+plot((minima_4_x_pos),(minima_4),'-ro')
 xlabel('y coordinate')
 ylabel('pixel value')
 
